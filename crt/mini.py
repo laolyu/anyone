@@ -23,31 +23,29 @@ def pro():
     elif project_int == 4:
         pp = ['heinote', '0508']
     elif project_int == 5:
-        pp = ['finder', '0512']
+        pp = ['gsss', '0512']
     elif project_int == 6:
-        pp = ['browser', '0613']
-    # elif project_int == 7:
-    #     return 'yp'
-    # elif project_int == 10:
-    #     return 'pdf001'
-    # elif project_int == 11:
-    #     return 'wx
-    # elif project_int == 12:
-    #     return 'haotu'
-    # elif project_int == 13:
-    #     return 'bz01'
-    # elif project_int == 14:
-    #     return 'srf
+        pp = ['7654Browser', '0613']
+    elif project_int == 10:
+        pp = ['whirlwindpdf', '0714']
+    elif project_int == 11:
+        pp = ['smartlook', '1017']
+    elif project_int == 12:
+        pp = ['haotu', '0916']
+    elif project_int == 13:
+        pp = ['calfWallpape', '0815']
+    elif project_int == 14:
+        pp = ['sesame', '1118']
     # elif project_int == 15:
-    #     return 'jkkantu'
-    # elif project_int == 20:
-    #     return 'lszip', '1219'
-    # elif project_int == 21:
-    #     return 'jcwallpaper'
+    #     pp='jkkantu'
+    elif project_int == 20:
+        pp = ['lszip', '1219']
+    elif project_int == 21:
+        pp = ['jcwallpaper', 'bz02']
     elif project_int == 22:
         pp = ['xinnote', '3001']
     elif project_int == 23:
-        pp = ['qingjiepdf', '4001']
+        pp = ['qjpdf', '4001']
     pp.append(project_int)
     return pp
 
@@ -62,31 +60,35 @@ def enve():
     return env_int
 
 
-# def exex(proj):
-#     path = r'Desktop' + '\\'
-#     exe = ['MiniNews.exe', 'tnewsplus-mx.exe', 'xfpressnews.exe', 'wxdessertcookies.exe', 'ktfreshnews.exe',
-#            'srfnewsmsg.exe', 'jkmemonews.exe']
-#
-#     if proj in range(0, 10):
-#         return path + exe[0]
-#     elif proj in range(20, 24):
-#         return path + exe[1]
-#     if proj == 10:
-#         return path + exe[2]
-#     elif proj == 11:
-#         return path + exe[3]
-#     elif proj == 12 or proj == 13:
-#         return path + exe[4]
-#     elif proj == 14:
-#         return path + exe[5]
-#     elif proj == 15:
-#         return path + exe[6]
+def exex(proj):
+    path = r'Desktop' + '\\'
+    exe = ['MiniNews.exe', 'MiniNews_mx.exe', 'MiniNews_pdf.exe', 'MiniNews_wxyl.exe', 'MiniNews_ht.exe.exe', 'MiniNews_srf.exe', 'jkmemonews.exe']
+
+    if proj in range(0, 10):
+        return path + exe[0]
+    elif proj in range(20, 24):
+        return path + exe[1]
+    if proj == 10:
+        return path + exe[2]
+    elif proj == 11:
+        return path + exe[3]
+    elif proj == 12 or proj == 13:
+        return path + exe[4]
+    elif proj == 14:
+        return path + exe[5]
+    elif proj == 15:
+        return path + exe[6]
 
 
-def argue(project_url,proj):
+def argue(env, project_url, proj):
     mutex = random.choice(string.ascii_letters)  # 包含所有字母(大写或小写)的字符串
     code = project_url
-    url = '"http://news.7654.com/mini_new4/%s/?qid=qid_cmd&uid=UIDXXXX&env=0&screen_h=926"' % (code)
+    test = 'test.gamma-minipage.'
+    if env == 0:
+        test = test
+    else:
+        test = ''
+    url = '"http://%snews.7654.com/mini_new4/%s/?qid=qid_cmd&uid=UIDXXXX&env=0&screen_h=926"' % (test, code)
     arg = ' -killprocess=1 -enablehomepagerand=1 -Optimize=10 -DisplayTitle=7654Browser -writetck=LiveUpdate360,632 -usesspmode=1 ' \
           '-TopUrl=http://down1.7654browser.vfpzmg.cn/tui/mininews/mininewsplus/ffzdr.png -AntiMaliciousClick=60/500 -pbcuttitlenews =-1 ' \
           '-pp=f658353f4b8fa066479e2818f52584c2 -showWeather=false -align=top -captioncolor=#FFFFFF -ShowCloseMenu=1 -MaxWebClickCount=2 -ClassName=xiralie ' \
@@ -98,15 +100,13 @@ def argue(project_url,proj):
     return argues
 
 
-
-
 def main():
-    enve()
+    env = enve()
     project = pro()
-    proj = project[-1]
     project_url = project[1]
-    # exex(proj)
-    cmd = argue(project_url,proj)
+    proj = project[-1]
+
+    cmd = argue(env, project_url, proj)
     crt.Screen.Send(cmd + "\r")
 
 
