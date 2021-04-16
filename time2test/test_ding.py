@@ -49,21 +49,21 @@ devices = devices()
 myskip = pytest.mark.skipif(devices != True, reason='skip赋值给变量，可多处调用')
 
 
-@allure.feature('设备检测')
+@allure.feature('模块1,设备检测')
 @pytest.mark.run(order=1)
 def test_devices():
-    logger.info('111111111')
+    logger.info('模块1,设备检测')
     if not devices:
         subject = 'no devices/emulators found'
         sent_mail(None, subject, None)
     assert devices == True
 
 
-@allure.feature('重启')
+@allure.feature('模块3,重启')
 @myskip
 @pytest.mark.run(order=3)
 def test_reboot():
-    logger.info('case----3')
+    logger.info('模块3,重启')
     week = datetime.datetime.today().weekday() + 1
     now_localtime = time.strftime("%H:%M:%S", time.localtime())  # 当前时间
     if "10:00:00" > now_localtime and (week == 1 or week == 3 or week == 5):
@@ -73,13 +73,15 @@ def test_reboot():
         logger.info('week is %s' % week)
 
 
+@allure.feature("模块2,执行任务")
 @pytest.mark.run(order=2)
 @myskip
 class TestDd:
     @pytest.fixture()
     def file(self):
-        logger.info('case0222222')
-        sleeptime = random.randint(0, 200)
+        logger.info('模块2,file')
+        sleeptime = random.randint(0, 6) * 40
+        logger.info('sleep %s' % sleeptime)
         time.sleep(sleeptime)
         file = r'F:\screenshot\screenshot.png'
         try:
@@ -126,7 +128,7 @@ class TestDd:
             subject = it_on[0]
         return subject
 
-    @allure.story('检查并发邮件')
+    @allure.story('截图识别发邮件')
     @pytest.mark.flaky(reruns=2, reruns_delay=31)
     def test_todo(self, file, subject, message):
         if subject == '':
