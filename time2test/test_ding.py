@@ -1,5 +1,4 @@
 # -*- coding:utf-8 -*-
-import datetime
 import os
 import random
 import re
@@ -64,13 +63,13 @@ def test_devices():
 @pytest.mark.run(order=3)
 def test_reboot():
     logger.info('模块3,重启')
-    week = datetime.datetime.today().weekday() + 1
+    # week = datetime.datetime.today().weekday() + 1
     now_localtime = time.strftime("%H:%M:%S", time.localtime())  # 当前时间
-    if "10:00:00" > now_localtime and (week == 1 or week == 3 or week == 5):
+    if now_localtime < "10:00:00":
         logger.info('reboot')
         os.system('adb reboot')
     else:
-        logger.info('week is %s' % week)
+        logger.info('reboot only morning')
 
 
 @allure.feature("模块2,执行任务")
