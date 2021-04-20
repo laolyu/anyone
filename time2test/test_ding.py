@@ -115,7 +115,6 @@ class TestDd:
 
     @pytest.fixture()
     def subject(self, message):
-        subject = ''
         pattern = re.compile(r'\d{2}:\d{2}极速打卡')
         it = pattern.findall(message)
 
@@ -126,16 +125,18 @@ class TestDd:
             subject = it[0]
         elif it_on:
             subject = it_on[0]
+        elif '登录' in message:
+            subject = 'error:未登录'
+        else:
+            subject = 'error:未知异常'
         return subject
 
     @allure.story('截图识别发邮件')
     @pytest.mark.flaky(reruns=2, reruns_delay=31)
     def test_todo(self, file, subject, message):
-        if subject == '':
-            subject = 'fail'
         sent_mail(file, subject, message)
         logger.info('subject=%s,message=%s' % (subject, message))
-        assert subject != 'fail'
+        assert '异常' not in subject
 
 
 if __name__ == '__main__':
