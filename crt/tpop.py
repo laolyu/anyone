@@ -6,9 +6,9 @@ import string
 
 def project():
     project_0 = crt.Dialog.Prompt(
-        "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6//pdf-10,wx-11,haotu-12,bz01-13//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23",
+        "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6//pdf-10,wx-11,haotu-12,bz01-13//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23,cloudbar-24",
         "project",
-        "3",
+        "24",
         False)
     project_int = int(project_0)
     return project_int
@@ -18,7 +18,7 @@ def enve():
     env_0 = crt.Dialog.Prompt(
         "测试-0,线上-1",
         "env",
-        "1",
+        "0",
         False)
     env_int = int(env_0)
     return env_int
@@ -99,12 +99,13 @@ def argue():
 
     heinote = argues + '-dspurl=%s' % url_host + "infoflow/jsbtest/4/ -project=heinote "
     finder = argues + '-dspurl=%s' % url_host + "infoflow/sp/4/ -project=finder "
-    browser = argues + '-dspurl=%s' % url_host + "infoflow/llq/4/ -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/7654.data -project=browser "
+    browser = argues + '-dspurl=%s' % url_host + "infoflow/llq/4/ -reportjsonurl=http://down1.7654browser.shzhanmeng.com/test/7654.data -project=browser "
 
     lszip = argues + '-dspurl=%s' % url_host + "infoflow/ls/4/ -project=lszip "
     jcwallpaper = argues + '-dspurl=%s' % url_host + "infoflow/jc/4/ -project=jcwallpaper "
     xinnote = argues + '-dspurl=%s' % url_host + "infoflow/jsb003/4/ -project=xinnote "
-    qingjiepdf = argues + '-dspurl=%s' % url_host + "infoflow/pdf002/4/ -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/qjpdf.data -project=qingjiepdf  "
+    qingjiepdf = argues + '-dspurl=%s' % url_host + "infoflow/pdf002/4/ -reportjsonurl=http://down1.7654browser.shzhanmeng.com/test/qjpdf.data -project=qingjiepdf  "
+    cloudbar = argues + '-dspurl=%s' % url_host + "infoflow/gjl001/4/ -project=cloudbar "
 
     pdf001 = argues + '-dspurl=%s' % url_host + "infoflow/pdf/4/ -project=whirlwindpdf"
     wx = argues + '-dspurl=%s' % url_host + "infoflow//smartlook/4/ -project=smartlook "
@@ -143,9 +144,10 @@ def argue():
         return xinnote
     elif proj == 23:
         return qingjiepdf
-    elif proj == 0:
-        for i in [xiaoyu, kuaizip, kantu, heinote, finder, browser]:
-            return i
+    elif proj == 24:
+        return cloudbar
+    else:
+        crt.Dialog.MessageBox('proj error')
 
 
 def main():

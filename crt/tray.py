@@ -9,7 +9,7 @@ def project():
     project_0 = crt.Dialog.Prompt(
         "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6//pdf-10,wx-11,haotu-12,bz01-13//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23",
         "project",
-        "11",
+        "6",
         False)
     proj = int(project_0)
 
@@ -142,7 +142,7 @@ def argue():
             adurl = 'error'
             crt.Dialog.MessageBox('adurl error')
 
-    arg = '%s -taskid=tray-py -killprocess=1 -usewebmode=1 -localcity="青夏" -mutex=%s -project=%s %s -reportold=0 ' \
+    arg = '%s -taskid=tray-py -killprocess=1 -usewebmode=1 -localcity="青夏" -mutex=%s -project=%s %s ' \
           '-reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/haotu.data -reportprefix=traytip-1-dsp-zm -hibernate=0 ' % (
               exe, mutex, project, adurl)
 
@@ -161,10 +161,10 @@ def argue():
     else:
         arg += close
 
-    arg += '-trayopentype=0 '  # 无预览图弹出“忽略+查看详情+退出闪标"菜单,
+    # arg += '-trayopentype=0 '  # 无预览图弹出“忽略+查看详情+退出闪标"菜单,
     # arg += '-trayopentype=1 ' #不写或=1 左右键都打开落地页
     # arg += '-trayopentype=2 '  # =2时（有预览图时，按=1方式处理;无预览图无忽略点击右键菜单中的 "查看详情", 则打开落地页，同时上报.view-click,点退出)
-    # arg += '-trayopentype=3 '  # =3时(有预览图时，按=1方式处理;无预览图弹出“忽略”菜单，点击“忽略”后左右键都打开落地页;无忽略点击右键菜单中的 "查看详情", 则打开落地页，同时上报.view-click)
+    arg += '-trayopentype=3 '  # =3时(有预览图时，按=1方式处理;无预览图弹出“忽略”菜单，点击“忽略”后左右键都打开落地页;无忽略点击右键菜单中的 "查看详情", 则打开落地页，同时上报.view-click)
 
     # arg += '-showneglect=0 '  # 无预览图=1弹出“忽略”菜单，点击“忽略”后左右键都打开落地页(只有在没有预览图且FLG_trayopentype != 3的情况下才起作用)
 

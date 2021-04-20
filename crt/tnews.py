@@ -7,9 +7,9 @@ import string
 def project():
     project_0 = crt.Dialog.Prompt(
         "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6,yp-7//pdf-10,wx-11,haotu-12,bz01-13,srf-14,"
-        "jkkantu-15//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23",
+        "jkkantu-15//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23,cloudbar-24",
         "project",
-        "12",
+        "1",
         False)
     project_int = int(project_0)
     return project_int
@@ -39,7 +39,7 @@ def exex():
 
     if proj in range(0, 10):
         return path + exe[0]
-    elif proj in range(20, 24):
+    elif proj in range(20, 25):
         return path + exe[1]
     if proj == 10:
         return path + exe[2]
@@ -54,9 +54,9 @@ def exex():
 
 
 def url_host():
-    url_host = ["-dspurl=http://test.gamma-minipage.news.7654.com", "-dspurl=http://news.7654.com",
-                "-dspurl=http://egg-test.7654.com", "-dspurl=http://page.suyazip.com",
-                "-dspurl=http://gg-smartlook.wnplayer.cn", "-dspurl=http://gg.wallpaper.shqingzao.com"]
+    url_host = ["-dspurl=http://test.gamma-minipage.news.7654.com", "-dspurl=http://news.7654.com", "-dspurl=http://egg-test.7654.com",
+                "-dspurl=http://page.suyazip.com", "-dspurl=http://gg-smartlook.wnplayer.cn", "-dspurl=http://gg.wallpaper.shqingzao.com",
+                '-dspurl=http://ads.shjiameinuo.com']
     # url_host = ["-dspurl=http://172.18.15.180:8080", "-dspurl=http://news.7654.com",
     #             "-dspurl=http://egg-test.7654.com", "-dspurl=http://page.suyazip.com",
     #             "-dspurl=http://gg-smartlook.wnplayer.cn", "-dspurl=http://gg.wallpaper.shqingzao.com"]
@@ -97,17 +97,17 @@ def argue():
     #              '-landingpage=http://www.baidu.com -closeimagesize=14x14_w  ' \
     #              '-configurl=http://ifinder.shzhanmeng.com/tui/tips/2/xml/kb-tips.xml ' \
     #              '-newsurl=http://www.hoteastday.com/api/tnews_news_list/tnews5/gs005 '
-    argue_skin = '-usewebmode=0  -skinurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/xml/TnewsPlus.zip  ' \
+    argue_skin = ' -usewebmode=0  -skinurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/xml/TnewsPlus.zip  ' \
                  '-landingpage=http://www.bing.com -closeimagesize=14x14_w  ' \
                  '-configurl=http://ifinder.shzhanmeng.com/tui/tips/2/xml/kb-tips.xml ' \
                  '-newsurl=http://test.gamma-minipage.news.7654.com/tipsdsp/13/s11 '
 
     arg = '-writelog=1 -classname=class -title=title -reportprefix=tnews-2-cs-b0 -recordshow=1 -localcity="厦门" -taskid=tnews.py -killprocess=1 -isnewuser=0 ' \
           '-blockclosemsg=1 -blockdestroymsg=1 -bp=1000 -blockmsgcnt=2 -wmclosereportcnt=2 -venueshowmax=0 -mutex=%s -position=%s -popmenu=1 -nopopwhenlong=1 ' \
-          '-hibernate=0 -reportold=0 ' % (
+          '-hibernate=0 ' % (
               mutex, positition)
 
-    # argues = exe +' '+ arg + argue_skin
+    arg_skin = exe + ' ' + arg + argue_skin
     argues = exe + ' ' + arg
     close = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close.json "
     close_fei = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close_fei.json "
@@ -123,12 +123,14 @@ def argue():
     finder = argues + "/tnewsdsp/05/s11/?product_category=23 -project=finder "
     browser = argues + "/tnewsdsp/09/s11/?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/7654.data -project=browser "
     yp = exe + url_begin + "/tnewsdsp/yp01.html -project=kuaizip "
-    # browser = argues + " -project=browser "  #走皮肤
+    # browser = arg_skin + " -project=browser "  # 走皮肤
+    # cloudbar = arg_skin + " -project=cloudbar "  # 走皮肤
 
     lszip = argues + "/tnewsdsp/20/s11/?product_category=23 -project=lszip "
     jcwallpaper = argues + "/tnewsdsp/21/s11/?product_category=23 -project=jcwallpaper "
     xinnote = argues + "/tnewsdsp/22/s11/?product_category=23 -project=xinnote "
     qingjiepdf = argues + "/tnewsdsp/23/s11/?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/qjpdf.data  -project=qingjiepdf "
+    cloudbar = argues + "/tnewsdsp/26/s11/?product_category=23 -project=cloudbar "
 
     pdf001 = argues + "/pdf/whirlwindpdf/tnews_pdf?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/pdf.data -project=whirlwindpdf"
     wx = argues + "/wx/smartlook/wxtnews?product_category=23 -project=smartlook "
@@ -171,9 +173,10 @@ def argue():
         return xinnote
     elif proj == 23:
         return qingjiepdf
-    elif proj == 0:
-        for i in [xiaoyu, kuaizip, kantu, heinote, finder, browser]:
-            return i
+    elif proj == 24:
+        return cloudbar
+    else:
+        crt.Dialog.MessageBox('proj error')
 
 
 def main():

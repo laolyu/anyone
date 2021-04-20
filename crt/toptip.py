@@ -31,7 +31,7 @@ proj = project()
 
 def exex():
     path = r'Desktop' + '\\'
-    exe = ['toptips.exe', 'mxhfpop.exe', 'xfpressnews.exe', 'wxdessertcookies.exe', 'ktpostpop.exe', 'srfnewsmsg.exe', 'jkmemonews.exe']
+    exe = ['toptips.exe', 'mxhfpop.exe', 'xfmationpop.exe', 'wxfreshpop.exe', 'ktpostpop.exe', 'srfnewsmsg.exe', 'jkmemonews.exe']
     # for i in range(len(exe)):
     #     crt.Screen.Send("taskkill /f /t /im " + exe[i] + "\r")
     # crt.Screen.WaitForString("进程")
@@ -103,7 +103,7 @@ def argue():
 
     arg = '-writelog=1 -classname=class -title=title -reportprefix=tips-2-cs-b0 -recordshow=1 -localcity="厦门" -taskid=tips.py -killprocess=1 -isnewuser=0 ' \
           '-blockclosemsg=1 -blockdestroymsg=1 -bp=1000 -blockmsgcnt=2 -wmclosereportcnt=2 -venueshowmax=0 -mutex=%s -position=%s -popmenu=1 -nopopwhenlong=1 ' \
-          '-hibernate=0 -reportold=0 ' % (
+          '-hibernate=0 ' % (
               mutex, positition)
 
     # argues = exe +' '+ arg + argue_skin
@@ -115,26 +115,26 @@ def argue():
     else:
         argues += close + url_begin
 
-    xiaoyu = argues + "/tipsdsp/07_new/s12/?product_category=23 -project=xiaoyu "
-    kuaizip = argues + "/tipsdsp/08/s12/?product_category=23 -project=kuaizip "
-    kantu = argues + "/tipsdsp/09/s12/?product_category=23 -project=kantu "
-    heinote = argues + "/tipsdsp/10/s12/?product_category=23 -project=heinote "
-    finder = argues + "/tipsdsp/11/s12/?product_category=23 -project=finder "
-    browser = argues + "/tipsdsp/13/s12/?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/7654.data -project=browser "
+    xiaoyu = argues + "/tipsdsp/07_new/s12/?product_category=27 -project=xiaoyu "
+    kuaizip = argues + "/tipsdsp/08/s12/?product_category=27 -project=kuaizip "
+    kantu = argues + "/tipsdsp/09/s12/?product_category=27 -project=kantu "
+    heinote = argues + "/tipsdsp/10/s12/?product_category=27 -project=heinote "
+    finder = argues + "/tipsdsp/11/s12/?product_category=27 -project=finder "
+    browser = argues + "/tipsdsp/13/s12/?product_category=27 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/7654.data -project=browser "
     yp = exe + url_begin + "/tipsdsp/yp01.html -project=kuaizip "
     # browser = argues + " -project=browser "  #走皮肤
 
-    lszip = argues + "/tipsdsp/20/s12/?product_category=23 -project=lszip "
-    jcwallpaper = argues + "/tipsdsp/21/s12/?product_category=23 -project=jcwallpaper "
-    xinnote = argues + "/tipsdsp/22/s12/?product_category=23 -project=xinnote "
-    qingjiepdf = argues + "/tipsdsp/23/s12/?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/qjpdf.data  -project=qingjiepdf "
+    lszip = argues + "/tipsdsp/20/s12/?product_category=27 -project=lszip "
+    jcwallpaper = argues + "/tipsdsp/21/s12/?product_category=27 -project=jcwallpaper "
+    xinnote = argues + "/tipsdsp/22/s12/?product_category=27 -project=xinnote "
+    qingjiepdf = argues + "/tipsdsp/23/s12/?product_category=27 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/qjpdf.data  -project=qingjiepdf "
 
-    pdf001 = argues + "/pdf/whirlwindpdf/tips_pdf?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/pdf.data -project=whirlwindpdf"
-    wx = argues + "/wx/smartlook/wxtips?product_category=23 -project=smartlook "
-    haotu = argues + "/ht/haotu/haotutips?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tips/haotu.data -project=haotu "
-    bz01 = argues + "/bz/calfwallpaper/bztips?product_category=23 -project=calfwallpaper "
-    srf = argues + "/zhima/sesame/srftips?product_category=23 -project=sesame "
-    jkkantu = argues + "/jk/jkkantu/jktips?product_category=23 -project=jkkantu "
+    pdf001 = argues + "/pdf/whirlwindpdf/tips_pdf?product_category=27 -project=whirlwindpdf"
+    wx = argues + "/wx/smartlook/wxtips?product_category=27 -project=smartlook "
+    haotu = argues + "/ht/haotu/haotutips?product_category=27 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/test/haotu.data -project=haotu "
+    bz01 = argues + "/bz/calfwallpaper/bztips?product_category=27 -project=calfwallpaper "
+    srf = argues + "/zhima/sesame/srftips?product_category=27 -project=sesame "
+    jkkantu = argues + "/jk/jkkantu/jktips?product_category=27 -project=jkkantu "
 
     if proj == 1:
         return xiaoyu
