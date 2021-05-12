@@ -79,7 +79,7 @@ class TestDd:
     @pytest.fixture()
     def file(self):
         logger.info('模块2,file')
-        sleeptime = random.randint(0, 6) * 40
+        sleeptime = random.randint(0, 6) * 50
         logger.info('sleep %s' % sleeptime)
         time.sleep(sleeptime)
         file = r'F:\screenshot\screenshot.png'
@@ -95,8 +95,7 @@ class TestDd:
         time.sleep(2)
         logger.debug('DD-start')
         os.system('adb -s 022GPLDU39019379 shell monkey -p com.alibaba.android.rimet 1')  # start
-        sleeptime = random.randint(25, 40)
-        time.sleep(sleeptime)
+        time.sleep(30)
         logger.debug('screenshot')
         os.system('adb -s 022GPLDU39019379 shell /system/bin/screencap -p /sdcard/screenshot.png')
         time.sleep(5)
