@@ -76,43 +76,44 @@ def test_reboot():
 @pytest.mark.run(order=2)
 @myskip
 class TestDd:
-    @pytest.fixture()
-    def file(self):
-        logger.info('模块2,file')
+    def test_unlock(self):
+        logger.info('模块1,unlock')
         sleeptime = random.randint(0, 6) * 50
         logger.info('sleep %s' % sleeptime)
         time.sleep(sleeptime)
-        file = r'F:\screenshot\screenshot.png'
-        try:
-            os.remove(file)
-        except OSError as e:
-            logger.info(e)
         os.system('adb -s 022GPLDU39019379 shell input keyevent 26')  # power
         time.sleep(2)
         os.system('adb -s 022GPLDU39019379 shell input keyevent 3')  # home
         time.sleep(1)
         os.system('adb -s 022GPLDU39019379 shell input keyevent 3')  # home
         time.sleep(2)
+
+    # @pytest.fixture()
+    def test_start(self):
         logger.debug('DD-start')
         os.system('adb -s 022GPLDU39019379 shell monkey -p com.alibaba.android.rimet 1')  # start
         time.sleep(30)
+
+    def login(self):
+        logger.info('模块4,login')
+        os.system('adb -s 022GPLDU39019379 shell input keyevent 61')  # Tab
+        time.sleep(0.2)
+        os.system('adb -s 022GPLDU39019379 shell input text l0vedd')  # text
+        time.sleep(0.4)
+        os.system('adb -s 022GPLDU39019379 shell input tap 360 680')  # click
+        time.sleep(5)
+
+    @pytest.mark.flaky(reruns=1, reruns_delay=1)
+    def test_screenshot(self):
         logger.debug('screenshot')
         os.system('adb -s 022GPLDU39019379 shell /system/bin/screencap -p /sdcard/screenshot.png')
         time.sleep(5)
         os.system('adb pull /sdcard/screenshot.png F:/screenshot')
-        time.sleep(5)
-        os.system('adb -s 022GPLDU39019379 shell am force-stop com.alibaba.android.rimet')
-        os.system('adb -s 022GPLDU39019379 shell input keyevent 26')
-        return file
-
-    @pytest.fixture()
-    def message(self, file):
+        time.sleep(2)
+        file = r'F:\screenshot\screenshot.png'
         messages = domain(file)
         message = messages.replace('考勤打卡:', '').replace('钉钉', '').replace('设置工作状态Q搜索', '').replace('M工作通知:上海展盟网', '')
-        return message
 
-    @pytest.fixture()
-    def subject(self, message):
         pattern = re.compile(r'\d{2}:\d{2}极速打卡')
         it = pattern.findall(message)
 
@@ -121,20 +122,23 @@ class TestDd:
 
         if it:
             subject = it[0]
+            sent_mail(file, subject, message)
         elif it_on:
             subject = it_on[0]
-        elif '登录' in message:
-            subject = 'error:未登录'
+            sent_mail(file, subject, message)
+        elif '你好' in message:
+            subject = 'login'
+            self.login()
+            self.test_screenshot()
         else:
             subject = 'error:未知异常'
-        return subject
-
-    @allure.story('截图识别发邮件')
-    @pytest.mark.flaky(reruns=2, reruns_delay=31)
-    def test_todo(self, file, subject, message):
-        sent_mail(file, subject, message)
+            sent_mail(file, subject, message)
         logger.info('subject=%s,message=%s' % (subject, message))
-        assert '异常' not in subject
+        assert 'error' not in subject
+
+    def test_lock(self):
+        os.system('adb -s 022GPLDU39019379 shell am force-stop com.alibaba.android.rimet')
+        os.system('adb -s 022GPLDU39019379 shell input keyevent 26')
 
 
 if __name__ == '__main__':
