@@ -1,6 +1,7 @@
 
 win10部署tomcat+jenkins更新
 1,
+2,git提交测试
 
 gamebox:
 http://game.shzhanmeng.com/api/upgrade/xffish_001/启动器版本  (升级接口)启动器检查dll版本
