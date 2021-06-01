@@ -2,21 +2,6 @@
 win10部署tomcat+jenkins更新
 1,
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 gamebox:
 http://game.shzhanmeng.com/api/upgrade/xffish_001/启动器版本  (升级接口)启动器检查dll版本
 升级
@@ -41,18 +26,10 @@ lua升级,修改logu
 
 
 
-
-
-
 移动dsp竞价:
 有优惠券/1.25
 无券/1.1
 配置的出价方式为CPC时，需要换算成CPM，CPM换算公式：CPC*点击率*1000，ctr写死为0.15
-
-
-
-
-
 
 
 
