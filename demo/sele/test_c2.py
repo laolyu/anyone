@@ -20,7 +20,7 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 # sys.path.append(rootPath)
 # import bank
-from bdocr import domain
+from demo.ocr import ocr_fateadm
 
 
 class Py(unittest.TestCase):
@@ -71,7 +71,7 @@ class Py(unittest.TestCase):
         #     img.close()
         # except:
         #     print('获取验证码失败')
-        vercode = domain('code_02.png')
+        vercode = ocr_fateadm.ocr_fateadm('code_02.png')
         time.sleep(1)
         driver.find_element_by_id("account").clear()
         driver.find_element_by_id("account").send_keys(account)

@@ -1,4 +1,3 @@
-import os
 import time
 import unittest
 
@@ -15,11 +14,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-curPath = os.path.abspath(os.path.dirname(__file__))
-rootPath = os.path.split(curPath)[0]
+# curPath = os.path.abspath(os.path.dirname(__file__))
+# rootPath = os.path.split(curPath)[0]
 # sys.path.append(rootPath)
 # import bank
-from bdocr import domain
+from demo.ocr import ocr_baidu
 
 
 class Py(unittest.TestCase):
@@ -75,7 +74,7 @@ class Py(unittest.TestCase):
         #     img.close()
         # except:
         #     print('获取验证码失败')
-        vercode = domain('code_08.png')
+        vercode = ocr_baidu.domain('code_08.png')
         time.sleep(1)
         driver.find_element_by_id("account").clear()
         driver.find_element_by_id("account").send_keys(account)
