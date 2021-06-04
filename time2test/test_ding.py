@@ -138,6 +138,7 @@ class TestDd:
 
     def test_lock(self):
         os.system('adb -s 022GPLDU39019379 shell am force-stop com.alibaba.android.rimet')
+        time.sleep(2)
         os.system('adb -s 022GPLDU39019379 shell input keyevent 26')
 
 

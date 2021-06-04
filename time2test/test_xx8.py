@@ -1,4 +1,3 @@
-import sys
 import time
 import unittest
 
@@ -19,7 +18,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # rootPath = os.path.split(curPath)[0]
 # sys.path.append(rootPath)
 
-sys.path.append("F:\\py")
+# sys.path.append("F:\\py")
 from demo.ocr import ocr_fateadm
 
 
@@ -37,6 +36,7 @@ class Py(unittest.TestCase):
         self.scheduler = BackgroundScheduler()
 
     def test_158(self):
+        print('158-测试Jenkins更新最新的git代码')
         # self.login('13628105564', 'l0vepp')
         # self.login('13796491944', 'l0vepp')
 
