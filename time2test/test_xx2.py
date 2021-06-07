@@ -36,7 +36,7 @@ class Py(unittest.TestCase):
         self.scheduler = BackgroundScheduler()
 
     def test_2212(self):
-        print('2212-测试Jenkins更新最新的git代码')
+        print('2212-测试Jenkins更新git代码')
         self.login('13917892212', 'l0vepp')
         self.sign()
         # self.send_mail()
