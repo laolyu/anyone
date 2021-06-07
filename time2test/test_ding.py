@@ -10,7 +10,7 @@ import urllib3
 import yagmail
 from loguru import logger
 
-from bdocr import domain
+from demo.ocr import ocr_baidu
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -78,7 +78,7 @@ def test_reboot():
 class TestDd:
     def test_unlock(self):
         logger.info('模块1,unlock')
-        sleeptime = random.randint(0, 6) * 50
+        sleeptime = random.randint(0, 6) * 50  # 默认50
         logger.info('sleep %s' % sleeptime)
         time.sleep(sleeptime)
         os.system('adb -s 022GPLDU39019379 shell input keyevent 26')  # power
@@ -101,7 +101,7 @@ class TestDd:
         os.system('adb -s 022GPLDU39019379 shell input text l0vedd')  # text
         time.sleep(0.4)
         os.system('adb -s 022GPLDU39019379 shell input tap 360 680')  # click
-        time.sleep(5)
+        time.sleep(20)  #等待登录成功
 
     @pytest.mark.flaky(reruns=1, reruns_delay=1)
     def test_screenshot(self):
@@ -111,7 +111,7 @@ class TestDd:
         os.system('adb pull /sdcard/screenshot.png F:/screenshot')
         time.sleep(2)
         file = r'F:\screenshot\screenshot.png'
-        messages = domain(file)
+        messages = ocr_baidu.domain(file)
         message = messages.replace('考勤打卡:', '').replace('钉钉', '').replace('设置工作状态Q搜索', '').replace('M工作通知:上海展盟网', '')
 
         pattern = re.compile(r'\d{2}:\d{2}极速打卡')
@@ -126,7 +126,7 @@ class TestDd:
         elif it_on:
             subject = it_on[0]
             sent_mail(file, subject, message)
-        elif '你好' in message:
+        elif '登录' in message:
             subject = 'login'
             self.login()
             self.test_screenshot()
