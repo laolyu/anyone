@@ -41,6 +41,7 @@ def domain(file):
         words_result = e
 
     write_to_file(words_result)
+    return words_result
 
 
 if __name__ == '__main__':

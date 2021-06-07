@@ -9,7 +9,7 @@ def pro():
         "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6,yp-7//pdf-10,wx-11,haotu-12,bz01-13,srf-14,"
         "jkkantu-15//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23",
         "project",
-        "11",
+        "20",
         False)
     project_int = int(project_0)
     project_url = 'project_url'
@@ -39,7 +39,7 @@ def pro():
     # elif project_int == 15:
     #     pp='jkkantu'
     elif project_int == 20:
-        pp = ['lszip', '1219']
+        pp = ['lsys', '1219']
     elif project_int == 21:
         pp = ['jcwallpaper', 'bz02']
     elif project_int == 22:
@@ -62,7 +62,7 @@ def enve():
 
 def exex(proj):
     path = r'Desktop' + '\\'
-    exe = ['MiniNews.exe', 'MiniNews_mx.exe', 'MiniNews_pdf.exe', 'MiniNews_wxyl.exe', 'MiniNews_ht.exe.exe', 'MiniNews_srf.exe', 'jkmemonews.exe']
+    exe = ['MiniNews.exe', 'MiniNews_mx.exe', 'MiniNews_pdf.exe', 'MiniNews_wxyl.exe', 'MiniNews_ht.exe', 'MiniNews_srf.exe', 'jkmemonews.exe']
 
     if proj in range(0, 10):
         return path + exe[0]
@@ -80,19 +80,20 @@ def exex(proj):
         return path + exe[6]
 
 
-def argue(env, project_url, proj):
+def argue(env, project_url, proj, qid):
     mutex = random.choice(string.ascii_letters)  # 包含所有字母(大写或小写)的字符串
     code = project_url
     test = 'test.gamma-minipage.'
-    if env == 0:
-        test = test
+    if env == 1:
+        host = 'http://news.7654.com/mini_new4/'
     else:
-        test = ''
-    url = '"http://%snews.7654.com/mini_new4/%s/?qid=qid_cmd&uid=UIDXXXX&env=0&screen_h=926"' % (test, code)
-    arg = ' -killprocess=1 -enablehomepagerand=1 -Optimize=10 -DisplayTitle=7654Browser -writetck=LiveUpdate360,632 -usesspmode=1 ' \
+        host = 'http://test.gamma-minipage.news.7654.com/'
+    url = '"%s?qid=qid_cmd&uid=UIDXXXX&env=0&screen_h=926"' % (host + code)
+    arg = ' -project=%s -killprocess=1 -enablehomepagerand=1 -Optimize=10 -DisplayTitle=7654Browser -writetck=LiveUpdate360,632 -usesspmode=1 ' \
           '-TopUrl=http://down1.7654browser.vfpzmg.cn/tui/mininews/mininewsplus/ffzdr.png -AntiMaliciousClick=60/500 -pbcuttitlenews =-1 ' \
-          '-pp=f658353f4b8fa066479e2818f52584c2 -showWeather=false -align=top -captioncolor=#FFFFFF -ShowCloseMenu=1 -MaxWebClickCount=2 -ClassName=xiralie ' \
-          '-Title=fireflye -Support7654Browser=true -MutexName=%s -IE9URL=%s -URL=%s -reportprefix=mininews-1 -taskid=taskid.mininews_1 ' % (mutex, url, url)
+          '-pp=f658353f4b8fa066479e2818f52584c2 -showWeather=1 -align=top -captioncolor=#245ECB -ShowCloseMenu=1 -MaxWebClickCount=2 -ClassName=xiralie ' \
+          '-Title=fireflye -Support7654Browser=1 -MutexName=%s -IE9URL=%s -URL=%s -reportprefix=mininews-1 -taskid=taskid.mininews_1 ' % (
+              qid, mutex, url, url)
     argues = exex(proj) + ' ' + arg
     close = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close.json "
     close_fei = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close_fei.json "
@@ -105,8 +106,9 @@ def main():
     project = pro()
     project_url = project[1]
     proj = project[-1]
+    qid = project[0]
 
-    cmd = argue(env, project_url, proj)
+    cmd = argue(env, project_url, proj, qid)
     crt.Screen.Send(cmd + "\r")
 
 

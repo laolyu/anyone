@@ -8,7 +8,7 @@ def project():
     project_0 = crt.Dialog.Prompt(
         "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6//pdf-10,wx-11,haotu-12,bz01-13//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23,cloudbar-24",
         "project",
-        "24",
+        "1",
         False)
     project_int = int(project_0)
     return project_int
@@ -84,8 +84,8 @@ def argue():
     #              '-newsurl=http://www.hoteastday.com/api/tnews_news_list/tnews5/gs005 '
 
     arg = '-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close.json -classname=clas -title=tle -reportprefix=tpop-2-cs-b4 -custombr=0 -recordshow=0 ' \
-          '-localcity="厦门" -taskid=tpop-py -killprocess=1 -blockclosemsg=1 -bp=1000 -enabletitlenews=1 -popmenu=1 -nopopwhenlong=1 -hibernate=0 -mutex=%s -reportold=0 ' % (
-              mutex)
+          '-localcity="厦门" -taskid=tpop-py -killprocess=1 -blockclosemsg=1 -bp=1000 -enabletitlenews=1 -popmenu=1 -nopopwhenlong=1 -hibernate=0 ' \
+          '-maxwebclickcount=1 -mutex=%s -reportold=0 ' % (mutex)
 
     # argues = exe + arg + argue_skin
     argues = exe() + ' ' + arg

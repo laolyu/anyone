@@ -9,7 +9,7 @@ def project():
         "xiaoyu-1,kuaizip-2,kantu-3,heinote-4,finder-5,browser-6,yp-7//pdf-10,wx-11,haotu-12,bz01-13,srf-14,"
         "jkkantu-15//lszip-20,jcwallpaper-21,xinnote-22,qingjiepdf-23,cloudbar-24",
         "project",
-        "10",
+        "5",
         False)
     project_int = int(project_0)
     return project_int
@@ -31,7 +31,7 @@ proj = project()
 
 def exex():
     path = r'Desktop' + '\\'
-    exe = ['TNewsPlus.exe', 'tnewsplus-mx.exe', 'xfpressnews.exe', 'wxdessertcookies.exe', 'ktfreshnews.exe',
+    exe = ['HelpBall.exe', 'tnewsplus-mx.exe', 'xfpressnews.exe', 'wxdessertcookies.exe', 'ktfreshnews.exe',
            'srfnewsmsg.exe', 'jkmemonews.exe']
     # for i in range(len(exe)):
     #     crt.Screen.Send("taskkill /f /t /im " + exe[i] + "\r")
@@ -102,25 +102,23 @@ def argue():
                  '-configurl=http://ifinder.shzhanmeng.com/tui/tips/2/xml/kb-tips.xml ' \
                  '-newsurl=http://test.gamma-minipage.news.7654.com/tipsdsp/13/s11 '
 
-    arg = '-writelog=1 -classname=class -title=title -reportprefix=tnews-2-cs-b0 -recordshow=1 -localcity="厦门" -taskid=tnews.py -killprocess=1 -isnewuser=0 ' \
-          '-blockclosemsg=1 -blockdestroymsg=1 -bp=1000 -blockmsgcnt=2 -wmclosereportcnt=2 -venueshowmax=0 -mutex=%s -position=%s -popmenu=1 -nopopwhenlong=1 ' \
-          '-hibernate=0 ' % (
-              mutex, positition)
+    arg = '-enablerc=0 -enablert=0 -classname=cla -title=tit -reportprefix=ball-2-cs-b4 -recordshow=1  -taskid=ball.py -killprocess=1  ' \
+          '-logo=http://down1.7654browser.shzhanmeng.com/test/abc.png '
 
     arg_skin = exe + ' ' + arg + argue_skin
-    argues = exe + ' ' + arg
-    close = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close.json "
-    close_fei = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close_fei.json "
-    if proj in range(10, 15):
-        argues += close_fei + url_begin
-    else:
-        argues += close + url_begin
+    argues = exe + ' ' + arg + url_begin
+    # close = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close.json "
+    # close_fei = "-closebuttonjsonurl=http://down1.7654browser.shzhanmeng.com/test/close_fei.json "
+    # if proj in range(10, 15):
+    #     argues += close_fei + url_begin
+    # else:
+    #     argues += close + url_begin
 
     xiaoyu = argues + "/tnewsdsp/01/s11/?product_category=23 -project=xiaoyu "
     kuaizip = argues + "/tnewsdsp/02/s11/?product_category=23 -project=kuaizip "
     kantu = argues + "/tnewsdsp/03/s11/?product_category=23 -project=kantu "
     heinote = argues + "/tnewsdsp/04/s11/?product_category=23 -project=heinote "
-    finder = argues + "/tnewsdsp/05/s11/?product_category=23 -project=finder "
+    finder = argues + "/test-helpball/ss001 -project=finder "
     browser = argues + "/tnewsdsp/09/s11/?product_category=23 -reportjsonurl=http://down1.7654browser.shzhanmeng.com/tui/tnews/7654.data -project=browser "
     yp = exe + url_begin + "/tnewsdsp/yp01.html -project=kuaizip "
     # browser = arg_skin + " -project=browser "  # 走皮肤
