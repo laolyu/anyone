@@ -11,7 +11,7 @@ def get_file_content(file):
 
 def write_to_file(content):
     with open(r'C:\Users\Administrator\Desktop\text.txt', 'a', encoding='utf-8') as f:
-        f.write(content)
+        f.write(content + '\n')  # 文本最后换行
 
 
 def domain(file):
