@@ -33,14 +33,15 @@ def domain(file):
         # print(image_string)
         words_result = ''
         for string in image_string:
-            # words_result += string['words']  # 不换行
-            words_result += string['words'] + '\n'  # 换行
+            words_result += string['words']  # 不换行
+            # words_result += string['words'] + '\n'  # 换行
 
         print(words_result)
     except Exception as e:
         words_result = e
 
     write_to_file(words_result)
+    return words_result
 
 
 if __name__ == '__main__':
